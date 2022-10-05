@@ -22,28 +22,52 @@
 
     <p id="result">Correct/Wrong answer counter! </p>
 
-    <script>
+    <hr>
 
-        var correct = 0
-        var wrong = 0
+    <div class="container">
+        <img src="images/butterfly.jpg" alt="Butterfly" height="100" width="100" onclick="swapImage(this)" id="image_container">
+    </div>
 
-        function checkGuess() {
-            console.log("Getting form values")
-            name = document.getElementById("musicianName").value
-            guess = document.getElementById("guessName").value
-
-            if (name === guess) {
-                correct = correct + 1
-                alert("You got it right!!")
-            } else {
-                wrong = wrong + 1
-                alert("Wrong musician!!")
-            }
-
-            document.getElementById("result").innerHTML = "Wrong guess : " + wrong + "\n Correct guess : " + correct
-        }
-    </script>
 
 </body>
+
+<script>
+
+    var correct = 0
+    var wrong = 0
+    var useImage = 1
+
+    function swapImage() {
+
+        switch(useImage) {
+            case 1: document.getElementById("image_container").setAttribute("src", "images/ant.jpg")
+                    useImage = 2;
+                    break;
+            case 2: document.getElementById("image_container").setAttribute("src", "images/butterfly.jpg")
+                    useImage = 3;
+                    break;
+            case 3: document.getElementById("image_container").setAttribute("src", "images/earthworm.jpg")
+                    useImage = 1;
+                    break;
+        }
+
+    }
+
+    function checkGuess() {
+        console.log("Getting form values")
+        name = document.getElementById("musicianName").value
+        guess = document.getElementById("guessName").value
+
+        if (name === guess) {
+            correct = correct + 1
+            alert("You got it right!!")
+        } else {
+            wrong = wrong + 1
+            alert("Wrong musician!!")
+        }
+
+        document.getElementById("result").innerHTML = "Wrong guess : " + wrong + "\n Correct guess : " + correct
+    }
+</script>
 
 </html>
