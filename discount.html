@@ -17,12 +17,48 @@
         <input type="number" id="discount" name="discount" value=10> <br>
 
         <input type="button" onclick="discounted_price()" value="Apply discount ">
-    </form>
+    </form> <br>
+    <p id="result">Discounted price is : </p> <br>
+
+    <hr>
+
+    <br> <form>
+        <input type="radio" id="times" name="ops" value="times">
+        <label for="times">*</label></br>
+      
+        <input type="radio" id="divide" name="ops" value="divide">
+        <label for="divide">/</label></br>
+      
+        <input type="radio" id="exponent" name="ops" value="exponent">
+        <label for="exponent">**</label></br>
+
+        <input type="button" onclick="chooseOp()" value="Get Operation Values">
+    </form> <br>
+    <p id="operatorResult">Result : </p> <br>
 
 
-    <p id="result">Discounted price is : </p>
+
 
     <script>
+
+        function chooseOp() {
+            let amount = document.getElementById("amount").value
+            let discount = document.getElementById("discount").value
+            let timesOperator = document.getElementById("times").checked
+            let divideOperator = document.getElementById("divide").checked
+            let exponentOperator = document.getElementById("exponent").checked
+
+            if (timesOperator) {
+                document.getElementById("operatorResult").innerHTML = "Result : " + (amount*discount)
+            } 
+            if (divideOperator) {
+                document.getElementById("operatorResult").innerHTML = "Result : " + (amount/discount)
+            }
+            if (exponentOperator) {
+                document.getElementById("operatorResult").innerHTML = "Result : " + (amount**discount)
+            }
+
+        }
 
         function discounted_price() {
             console.log("Getting form values")
