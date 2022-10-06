@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vacation Page</title>
+</head>
+
+<body>
+
+    <h2>Neerazsai Veeranki selects a vacation</h2>
+
+    <form>
+        <input type="checkbox" id="travel" name="vacation1" value="True">
+        <label for="travel">Travel by Air</label></br>
+
+        <input type="checkbox" id="domestic" name="vacation2" value="True">
+        <label for="domestic">Domestic</label></br>
+
+        <input type="checkbox" id="resort" name="vacation3" value="False" checked>
+        <label for="resort">Resort</label></br>
+
+        <input type="button" onclick="selectVacation()" value="Select a vacation">
+    </form>
+
+    <p id="checked">Resulting Object </p>
+
+    <form>
+        <label for="form1_age">What is your age </label>
+        <input type="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+        <label for="form1_nick">What is your nickname </label>
+        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+        <input type="button" onclick="resolveForm()" value="Get values from form">
+    </form>
+
+
+    <p id="result">This text will be replaced </p>
+
+</body>
+
+<script>
+
+    var my_vacation = {}
+
+    function selectVacation() {
+        my_vacation = {}
+
+        let checkTravel = document.getElementById("travel").checked 
+        let checkDomestic = document.getElementById("domestic").checked 
+        let checkResort = document.getElementById("resort").checked 
+
+        my_vacation = {
+            "air" : checkTravel,
+            "domestic" : checkDomestic,
+            "resort" : checkResort 
+        }
+
+        document.getElementById("checked").innerHTML = "Object : "+JSON.stringify(my_vacation)
+        console.log(my_vacation)
+    }
+
+    function resolveForm() {
+        console.log("Getting form values")
+        age = document.getElementById("form1_age").value
+        nick = document.getElementById("form1_nick").value
+        confirmed = confirm("Are these the values? " + age + " and " + nick)
+
+        out = document.getElementById("result")
+        if (confirmed) {
+            out.innerHTML = "Values were confirmed"
+        } else {
+            out.innerHTML = "Values were not confirmed"
+        }
+    }
+</script>
+
+
+</html>
