@@ -25,17 +25,17 @@
     <p id="checked">Resulting Object </p>
 
     <form>
-        <label for="form1_age">What is your age </label>
-        <input type="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+        <label for="property">Enter a city : </label>
+        <input type="text" id="property" name="property" value="city"> <br>
 
-        <label for="form1_nick">What is your nickname </label>
-        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+        <label for="price">Enter price : </label>
+        <input type="text" id="price" name="price"> <br>
 
-        <input type="button" onclick="resolveForm()" value="Get values from form">
+        <input type="button" onclick="updateVacation()" value="Update the vacation">
     </form>
 
 
-    <p id="result">This text will be replaced </p>
+    <p id="formResult">Object after updation </p>
 
 </body>
 
@@ -60,18 +60,14 @@
         console.log(my_vacation)
     }
 
-    function resolveForm() {
-        console.log("Getting form values")
-        age = document.getElementById("form1_age").value
-        nick = document.getElementById("form1_nick").value
-        confirmed = confirm("Are these the values? " + age + " and " + nick)
+    function updateVacation() {
+        let property = document.getElementById("property").value
+        let price = document.getElementById("price").value
 
-        out = document.getElementById("result")
-        if (confirmed) {
-            out.innerHTML = "Values were confirmed"
-        } else {
-            out.innerHTML = "Values were not confirmed"
-        }
+        my_vacation.property = property
+        my_vacation.price = price
+
+        document.getElementById("formResult").innerHTML = "Object : "+JSON.stringify(my_vacation)
     }
 </script>
 
